@@ -27,4 +27,21 @@ public class Przykladowy extends Block {
 	{
 		return side;
 	}
+	
+	public void onBlockAdded(World world, int x, int y, int z)
+	{
+		super.onBlockAdded(world, x, y, z);
+		world.setBlockTileEntity(x, y, z, new TileEntityPrzykladowy());
+	}
+	
+	public void breakBlock(World world, int x, int y, int z, int par5, int par6)
+	{
+		super.breakBlock(world, x, y, z, par5, par6);
+		world.removeBlockTileEntity(x, y, z);
+	}
+	
+	public boolean hasTileEntity(int metadata)
+	{
+		return true;
+	}
 }
