@@ -5,6 +5,7 @@ import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
 import Testy.Bloki.Przykladowy;
 import Testy.Bloki.TileEntityPrzykladowy;
@@ -64,24 +65,27 @@ public class Testy {
 	}
 	
 	@Init
-	public void init(FMLInitializationEvent evt) {
+	public void init(FMLInitializationEvent event) {
 		//bloki
-		blokPrzykladowy = new Przykladowy(1000, 0).setBlockName("Przykladowy").setHardness(1.f).setResistance(10.f).setStepSound(Block.soundWoodFootstep);
+		blokPrzykladowy = new Przykladowy(proxy.getConfig().get(Configuration.CATEGORY_BLOCK, "PrzykladowyBlok", 1000).getInt(), 0).setBlockName("Przykladowy").setHardness(1.f).setResistance(10.f).setStepSound(Block.soundWoodFootstep);
 		
 		//itemy
-		itemPrzyklad = new PrzykladowyItem(1001).setItemName("itemek");
+		itemPrzyklad = new PrzykladowyItem(proxy.getConfig().get(Configuration.CATEGORY_ITEM,  "PrzykladowyItem", 1001).getInt()).setItemName("itemek");
 		miecz = new Miecz(1002, naszmaterial).setIconIndex(67).setItemName("miecz");
+		
+		proxy.getConfig().get(Configuration.CATEGORY_BLOCK, "cos", 2000).comment = "Nasz komentarz";
 		
 		zaladujDane();
 	}
 	
 	@PreInit
-	public void preInit(FMLPreInitializationEvent evt) {
+	public void preInit(FMLPreInitializationEvent event) {
 		proxy.registerRenderThings();
+		proxy.loadConfig(event.getSuggestedConfigurationFile());
 	}
 	
 	@PostInit
-	public void postInit(FMLPostInitializationEvent evt) {
-		
+	public void postInit(FMLPostInitializationEvent event) {
+		proxy.saveConfig();
 	}
 }
