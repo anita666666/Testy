@@ -11,6 +11,6 @@ public class TileEntityPrzykladowy extends TileEntity {
 	
 	public void updateEntity()
 	{
-		this.worldObj.setBlock(this.xCoord, this.yCoord,  this.zCoord+1, 1000);
+		//this.worldObj.setBlock(this.xCoord, this.yCoord,  this.zCoord+1, 1000);
 	}
 }

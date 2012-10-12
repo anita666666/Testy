@@ -28,6 +28,16 @@ public class Przykladowy extends Block {
 		return side;
 	}
 	
+	public int idDropped(int par1, Random random, int par2)
+	{
+		return 1;
+	}
+	
+	public int quantityDropped(Random random)
+	{
+		return random.nextInt(3)+1;
+	}
+	
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		super.onBlockAdded(world, x, y, z);

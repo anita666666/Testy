@@ -6,6 +6,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.EnumHelper;
 import Testy.Bloki.Przykladowy;
 import Testy.Bloki.TileEntityPrzykladowy;
@@ -60,6 +61,9 @@ public class Testy {
 								"M", "M", "P", 'M', itemPrzyklad, 'P', Item.stick
 								});
 		
+		//Przetapianie
+		GameRegistry.addSmelting(blokPrzykladowy.blockID, new ItemStack(Block.cactus), 2F);
+		
 		//Ladowanie tileEntities
 		GameRegistry.registerTileEntity(TileEntityPrzykladowy.class, "Przykladowy");
 	}
@@ -76,6 +80,10 @@ public class Testy {
 		proxy.getConfig().get(Configuration.CATEGORY_BLOCK, "cos", 2000).comment = "Nasz komentarz";
 		
 		zaladujDane();
+		
+		DungeonHooks.addDungeonLoot(new ItemStack(blokPrzykladowy), 10, 2, 7);
+		
+		DungeonHooks.setDungeonLootTries(15);
 	}
 	
 	@PreInit
