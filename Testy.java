@@ -10,9 +10,11 @@ import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.EnumHelper;
 import Testy.Bloki.Przykladowy;
 import Testy.Bloki.TileEntityPrzykladowy;
+import Testy.GUI.GuiHandler;
 import Testy.Itemy.Miecz;
 import Testy.Itemy.PrzykladowyItem;
 import Testy.common.CommonProxy;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,6 +25,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -66,6 +69,8 @@ public class Testy {
 		
 		//Ladowanie tileEntities
 		GameRegistry.registerTileEntity(TileEntityPrzykladowy.class, "Przykladowy");
+		
+		GameRegistry.registerFuelHandler(new PrzykladowyFuel());
 	}
 	
 	@Init
@@ -84,6 +89,8 @@ public class Testy {
 		DungeonHooks.addDungeonLoot(new ItemStack(blokPrzykladowy), 10, 2, 7);
 		
 		DungeonHooks.setDungeonLootTries(15);
+		
+		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
 	}
 	
 	@PreInit
