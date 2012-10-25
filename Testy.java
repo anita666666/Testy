@@ -52,7 +52,7 @@ public class Testy {
 		GameRegistry.registerBlock(blokPrzykladowy);
 		LanguageRegistry.addName(blokPrzykladowy, "Nasz bloczek");
 		
-		//Ladowanie itemów
+		//Ladowanie itemow
 		LanguageRegistry.addName(itemPrzyklad, "Nasz Itemek");
 		LanguageRegistry.addName(miecz, "Nasz mieczyk");
 		

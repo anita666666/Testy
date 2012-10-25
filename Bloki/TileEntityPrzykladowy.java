@@ -66,7 +66,7 @@ public class TileEntityPrzykladowy extends TileEntity implements IInventory {
 
 	@Override
 	public String getInvName() {
-		return "Testora skrzynka";
+		return "Testowa skrzynka";
 	}
 
 	@Override
