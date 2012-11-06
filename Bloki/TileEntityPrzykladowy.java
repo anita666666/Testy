@@ -10,6 +10,7 @@ import net.minecraft.src.TileEntity;
 public class TileEntityPrzykladowy extends TileEntity implements IInventory {
 	
 	private ItemStack[] inv;
+	public float angle  = 0;
 	
 	public TileEntityPrzykladowy()
 	{
@@ -19,6 +20,9 @@ public class TileEntityPrzykladowy extends TileEntity implements IInventory {
 	public void updateEntity()
 	{
 		//this.worldObj.setBlock(this.xCoord, this.yCoord,  this.zCoord+1, 1000);
+		angle += 1;
+		if(angle >= 360)
+			angle -= 360;
 	}
 
 	@Override

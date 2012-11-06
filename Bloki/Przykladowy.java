@@ -112,4 +112,29 @@ public class Przykladowy extends BlockContainer {
 	public TileEntity createNewTileEntity(World var1) {
 		return new TileEntityPrzykladowy();
 	}
+	
+	/****/
+	
+	@Override
+	public TileEntity createNewTileEntity(World var1, int metadata) {
+		return new TileEntityPrzykladowy();
+	}
+	
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+	
+	@Override
+	public int getRenderType()
+	{
+		return -1;
+	}
 }

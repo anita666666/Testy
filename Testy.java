@@ -9,6 +9,7 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.EnumHelper;
 import Testy.Bloki.Przykladowy;
+import Testy.Bloki.PrzykladowyRenderer;
 import Testy.Bloki.TileEntityPrzykladowy;
 import Testy.GUI.GuiHandler;
 import Testy.Itemy.Miecz;
@@ -71,6 +72,8 @@ public class Testy {
 		GameRegistry.registerTileEntity(TileEntityPrzykladowy.class, "Przykladowy");
 		
 		GameRegistry.registerFuelHandler(new PrzykladowyFuel());
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrzykladowy.class, new PrzykladowyRenderer());
 	}
 	
 	@Init
